@@ -115,9 +115,7 @@ Example request:
 curl -X POST http://localhost:5000/api/validate \
 -H "Content-Type: application/json" \
 -d '{"aadhaar":"123412341234"}'
-🖥 Live Demo (Optional)
-Frontend: https://udyam-frontend.vercel.app
-Backend: https://udyam-backend.railway.app
+
 
 📸 Screenshots
 Step 1 (Aadhaar)	Step 2 (PAN)
