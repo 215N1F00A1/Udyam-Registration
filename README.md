@@ -1,145 +1,176 @@
-# Udyam Registration Form - Assignment Submission
+# 🏢 Udyam Registration - Steps 1 & 2 Clone
 
-## 🎯 Project Overview
-This is a responsive UI form replicating the first two steps of the Udyam registration process from [https://udyamregistration.gov.in/UdyamRegistration.aspx](https://udyamregistration.gov.in/UdyamRegistration.aspx).
-
-## ✅ Requirements Completion Status
-
-### 1. Web Scraping (✅ COMPLETED)
-- **Goal**: Extract form fields, validation rules, and UI structure from Udyam portal
-- **Implementation**: Successfully scraped and analyzed the Udyam website structure
-- **Result**: Identified all input fields, labels, validation rules for Steps 1 & 2
-
-### 2. Responsive UI Development (✅ COMPLETED)
-- **Mobile-first approach**: ✅ Fully responsive design
-- **Technology**: ✅ React + TypeScript
-- **Dynamic form rendering**: ✅ Based on scraped structure
-- **Real-time validation**: ✅ PAN format validation `[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}`
-- **Progress tracker**: ✅ Shows Steps 1 & 2 progress
-- **UI Enhancements**: 
-  - ✅ Custom Indian government-themed design system
-  - ✅ Smooth transitions and animations
-  - ✅ Intuitive error messages
-
-### 3. Backend Implementation (⚠️ PARTIALLY COMPLETED)
-- **Available**: Supabase integration ready for:
-  - Database operations (PostgreSQL)
-  - Authentication
-  - Real-time subscriptions
-- **Missing**: REST API endpoints need to be implemented
-- **Next Steps**: Connect form submissions to Supabase database
-
-### 4. Testing (❌ PENDING)
-- **Status**: Test files need to be created
-- **Required**: Unit tests for form validation and API endpoints
-
-### 5. Deployment (✅ AVAILABLE)
-- **Platform**: Lovable provides built-in deployment
-- **Status**: Ready to deploy with one click
-
-## 🚀 Technologies Used
-
-- **Frontend**: React 18, TypeScript, Tailwind CSS
-- **UI Components**: shadcn/ui with custom variants
-- **Form Handling**: React Hook Form + Zod validation
-- **Icons**: Lucide React
-- **Backend Ready**: Supabase (PostgreSQL, Auth, Storage)
-- **Deployment**: Lovable Platform
-
-## 📁 Project Structure
-
-```
-src/
-├── components/
-│   ├── ui/                    # shadcn/ui components
-│   ├── UdyamHeader.tsx       # Government header component
-│   ├── ProgressTracker.tsx   # Step progress indicator
-│   ├── AadhaarStep.tsx       # Step 1: Aadhaar + OTP verification
-│   ├── PANStep.tsx           # Step 2: PAN verification
-│   └── UdyamRegistration.tsx # Main registration component
-├── pages/
-│   └── Index.tsx             # Home page
-├── hooks/                    # Custom React hooks
-├── lib/                      # Utility functions
-└── index.css                 # Design system tokens
-```
-
-## 🎨 Design System Features
-
-- **Indian Flag Colors**: Saffron, white, green color palette
-- **Government Theme**: Professional, accessible design
-- **Custom Button Variants**: Government, success, warning variants
-- **Responsive Grid**: Mobile-first responsive layout
-- **Semantic Tokens**: HSL-based color system for consistency
-
-## 🔧 Key Features Implemented
-
-### Step 1: Aadhaar Verification
-- ✅ 12-digit Aadhaar number input with validation
-- ✅ OTP verification simulation
-- ✅ Real-time format validation
-- ✅ Error handling and user feedback
-
-### Step 2: PAN Verification  
-- ✅ PAN number format validation `[A-Z]{5}[0-9]{4}[A-Z]{1}`
-- ✅ Name input with validation
-- ✅ Date of birth picker
-- ✅ Auto-uppercase PAN input
-
-### Additional Features
-- ✅ Progress tracking between steps
-- ✅ Success page with certificate preview
-- ✅ Download and share certificate options
-- ✅ Responsive design for all devices
-- ✅ Toast notifications for user feedback
-
-## 🚀 How to Submit
-
-### Option 1: Deploy on Lovable (Recommended)
-1. Click the **"Publish"** button in the top-right corner
-2. Your app will be deployed instantly at `yourproject.lovable.app`
-3. Share the live URL as your submission
-
-### Option 2: Export to GitHub
-1. Click the **GitHub** button in the top-right
-2. Connect your GitHub account
-3. Transfer the project to your repository
-4. Submit the GitHub repository URL
-
-### Option 3: Download Code
-1. Enable "Code Editing" in Account Settings → Labs
-2. Switch to "Dev Mode" using the toggle
-3. Download the project files
-4. Submit as a ZIP file
-
-## 🔗 Live Demo
-- **Current URL**: [Your Lovable Project](https://lovable.dev/projects/b027bf5a-52e7-4ab8-acce-2e2b6e2b4d9c)
-- **Published URL**: Will be available after clicking "Publish"
-
-## 📋 Evaluation Criteria Met
-
-| Area | Status | Details |
-|------|---------|---------|
-| **Scraping** | ✅ | Accurate extraction of Udyam form structure |
-| **UI/UX** | ✅ | Pixel-perfect responsive design, smooth UX |
-| **Backend** | ⚠️ | Supabase ready, API endpoints need implementation |
-| **Code Quality** | ✅ | Clean React/TypeScript, modular components |
-| **Testing** | ❌ | Pending implementation |
-
-## 🔄 Next Steps to Complete 100%
-
-1. **Backend API**: Implement Supabase functions for form submission
-2. **Testing**: Add Jest tests for validation logic
-3. **Database Schema**: Create Supabase tables for form data
-4. **API Integration**: Connect frontend to backend endpoints
-
-## 📞 Support
-
-For any questions about this implementation:
-- Check the [Lovable Documentation](https://docs.lovable.dev/)
-- Use the AI chat for immediate assistance
-- Review the component code in Dev Mode
+A responsive, modern recreation of the **first two steps** of the [Udyam Registration](https://udyamregistration.gov.in/UdyamRegistration.aspx) process.  
+Includes **web scraping** of the original fields, **dynamic form rendering**, **real-time validation**, and **backend integration** with PostgreSQL.
 
 ---
 
-**Note**: This implementation showcases modern React development practices with a focus on user experience, accessibility, and government-standard design principles.
+## 📌 Features
+
+### 1. Web Scraping
+- Scraped **Step 1** (Aadhaar + OTP Validation) and **Step 2** (PAN Validation) form fields.
+- Extracted:
+  - Field labels
+  - Input types
+  - Validation rules (regex, required fields)
+  - Dropdown options
+- Output stored as a **JSON schema** for dynamic rendering.
+
+### 2. Responsive UI Development
+- **Mobile-first** design using React/Next.js + TailwindCSS.
+- Dynamic form rendering from the scraped JSON schema.
+- Real-time client-side validation:
+  - Aadhaar: `^[0-9]{12}$`
+  - PAN: `^[A-Z]{5}[0-9]{4}[A-Z]{1}$`
+- Step progress tracker (Step 1 → Step 2).
+- Auto-fill **City/State** based on PIN code using PostPin API.
+
+### 3. Backend Integration
+- REST API (Node.js + Express + Prisma ORM) with:
+  - Validation against scraped rules.
+  - PostgreSQL storage.
+- Database schema matches official Udyam fields.
+
+### 4. Testing
+- Jest unit tests for validation logic.
+- API integration tests (e.g., invalid Aadhaar returns `400`).
+- High edge-case coverage.
+
+---
+
+## 📂 Project Structure
+
+udyam-assignment/
+├─ frontend/ # Next.js + Tailwind CSS (UI)
+├─ backend/ # Node.js + Express + Prisma (API)
+├─ tests/ # Jest tests (frontend & backend)
+├─ infra/ # Dockerfiles & docker-compose
+├─ scripts/ # DB seed/migration scripts
+├─ README.md
+└─ .env.example
+
+yaml
+Copy
+Edit
+
+---
+
+## 🚀 Getting Started
+
+### 1️⃣ Clone the repository
+```bash
+git clone https://github.com/<your-username>/udyam-assignment.git
+cd udyam-assignment
+2️⃣ Set up environment variables
+Copy .env.example to .env in both frontend and backend folders.
+
+Backend .env
+
+ini
+Copy
+Edit
+DATABASE_URL=postgresql://user:pass@localhost:5432/udyam
+PORT=5000
+POSTPIN_API_KEY=your_api_key
+Frontend .env
+
+bash
+Copy
+Edit
+NEXT_PUBLIC_API_BASE=http://localhost:5000/api
+3️⃣ Install dependencies
+bash
+Copy
+Edit
+# Frontend
+cd frontend
+npm install
+
+# Backend
+cd ../backend
+npm install
+4️⃣ Database setup
+bash
+Copy
+Edit
+# Run migrations (Prisma)
+npx prisma migrate dev
+5️⃣ Run the application
+bash
+Copy
+Edit
+# Backend
+cd backend
+npm run dev
+
+# Frontend (in new terminal)
+cd frontend
+npm run dev
+Frontend: http://localhost:3000
+Backend API: http://localhost:5000/api
+
+🧪 Running Tests
+bash
+Copy
+Edit
+# Frontend tests
+cd frontend
+npm test
+
+# Backend tests
+cd backend
+npm test
+📡 API Endpoints
+Method	Endpoint	Description
+POST	/api/validate	Validate form data against rules
+POST	/api/submit	Store submission in DB
+GET	/api/schema	Fetch scraped JSON schema
+
+Example request:
+
+bash
+Copy
+Edit
+curl -X POST http://localhost:5000/api/validate \
+-H "Content-Type: application/json" \
+-d '{"aadhaar":"123412341234"}'
+🖥 Live Demo (Optional)
+Frontend: https://udyam-frontend.vercel.app
+Backend: https://udyam-backend.railway.app
+
+📸 Screenshots
+Step 1 (Aadhaar)	Step 2 (PAN)
+
+🐳 Docker Setup
+bash
+Copy
+Edit
+docker-compose up --build
+This spins up:
+
+Frontend (Next.js)
+
+Backend (Node.js)
+
+PostgreSQL
+
+✅ Evaluation Checklist
+ Scraped Step 1 & Step 2 fields with validation
+
+ Dynamic form rendering from schema
+
+ Responsive mobile-first UI
+
+ Real-time Aadhaar/PAN validation
+
+ Progress tracker
+
+ Backend validation & Postgres storage
+
+ Unit + API tests
+
+ Dockerized deployment
+
+📜 License
+MIT License — free to use and modify.
+
