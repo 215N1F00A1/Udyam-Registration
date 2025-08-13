@@ -49,9 +49,7 @@ udyam-assignment/
 ├─ README.md
 └─ .env.example
 
-yaml
-Copy
-Edit
+
 
 ---
 
@@ -65,23 +63,13 @@ cd udyam-assignment
 Copy .env.example to .env in both frontend and backend folders.
 
 Backend .env
-
-ini
-Copy
-Edit
 DATABASE_URL=postgresql://user:pass@localhost:5432/udyam
 PORT=5000
 POSTPIN_API_KEY=your_api_key
-Frontend .env
 
-bash
-Copy
-Edit
 NEXT_PUBLIC_API_BASE=http://localhost:5000/api
 3️⃣ Install dependencies
-bash
-Copy
-Edit
+
 # Frontend
 cd frontend
 npm install
@@ -90,9 +78,7 @@ npm install
 cd ../backend
 npm install
 4️⃣ Database setup
-bash
-Copy
-Edit
+
 # Run migrations (Prisma)
 npx prisma migrate dev
 5️⃣ Run the application
@@ -110,9 +96,7 @@ Frontend: http://localhost:3000
 Backend API: http://localhost:5000/api
 
 🧪 Running Tests
-bash
-Copy
-Edit
+
 # Frontend tests
 cd frontend
 npm test
@@ -128,9 +112,6 @@ GET	/api/schema	Fetch scraped JSON schema
 
 Example request:
 
-bash
-Copy
-Edit
 curl -X POST http://localhost:5000/api/validate \
 -H "Content-Type: application/json" \
 -d '{"aadhaar":"123412341234"}'
