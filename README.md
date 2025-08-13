@@ -1,155 +1,100 @@
-# 🏢 Udyam Registration - 
+# 🏢 Udyam Digital Twin – MSME Registration Form
 
-A responsive, modern recreation of the **first two steps** of the [Udyam Registration](https://udyamregistration.gov.in/UdyamRegistration.aspx) process.https://udyam-registration-alpha.vercel.app/  
-Includes **web scraping** of the original fields, **dynamic form rendering**, **real-time validation**, and **backend integration** with PostgreSQL.
+A modern web application to simulate and manage **Udyam MSME Registration**.  
+Built with **Vite + React + Tailwind CSS** for the frontend and deployed on **Vercel**, with the backend running on **Render**.
+
+---
+
+## 🌐 Live Demo
+
+- **Frontend (Vercel)**: [https://udyam-registration-alpha.vercel.app/](https://udyam-registration-alpha.vercel.app/)  
+- **Backend API (Render)**: [https://udyam-registration-1.onrender.com/](https://udyam-registration-1.onrender.com/)
 
 ---
 
 ## 📌 Features
 
-### 1. Web Scraping
-- Scraped **Step 1** (Aadhaar + OTP Validation) and **Step 2** (PAN Validation) form fields.
-- Extracted:
-  - Field labels
-  - Input types
-  - Validation rules (regex, required fields)
-  - Dropdown options
-- Output stored as a **JSON schema** for dynamic rendering.
+- 📄 **MSME Registration Form** – Aadhaar, PAN, Mobile number validation  
+- ✅ **Real-time Validation** – Regex-based input checks  
+- 🔄 **API Integration** – Connects frontend to backend endpoints  
+- 🎨 **Responsive UI** – Tailwind CSS styling for all devices  
+- ⚡ **Fast & Lightweight** – Vite bundler for blazing performance  
 
-### 2. Responsive UI Development
-- **Mobile-first** design using React/Next.js + TailwindCSS.
-- Dynamic form rendering from the scraped JSON schema.
-- Real-time client-side validation:
-  - Aadhaar: `^[0-9]{12}$`
-  - PAN: `^[A-Z]{5}[0-9]{4}[A-Z]{1}$`
-- Step progress tracker (Step 1 → Step 2).
-- Auto-fill **City/State** based on PIN code using PostPin API.
+---
 
-### 3. Backend Integration
-- REST API (Node.js + Express + Prisma ORM) with:
-  - Validation against scraped rules.
-  - PostgreSQL storage.
-- Database schema matches official Udyam fields.
+## 🛠️ Tech Stack
 
-### 4. Testing
-- Jest unit tests for validation logic.
-- API integration tests (e.g., invalid Aadhaar returns `400`).
-- High edge-case coverage.
+### **Frontend**
+- **React** (Vite)
+- **Tailwind CSS**
+- **TypeScript**
+- **Axios** for API calls
+
+### **Backend**
+- **Node.js** + **Express**
+- **PostgreSQL** (Optional, if storing data)
+- **dotenv** for environment variables
+
+### **Hosting**
+- **Frontend** – [Vercel](https://vercel.com/)  
+- **Backend** – [Render](https://render.com/)
 
 ---
 
 ## 📂 Project Structure
 
-udyam-assignment/
-├─ frontend/ # Next.js + Tailwind CSS (UI)
-├─ backend/ # Node.js + Express + Prisma (API)
-├─ tests/ # Jest tests (frontend & backend)
-├─ infra/ # Dockerfiles & docker-compose
-├─ scripts/ # DB seed/migration scripts
-├─ README.md
-└─ .env.example
+udyam-digital-twin/
+│
+├── src/ # Frontend source code
+│ ├── components/ # Reusable UI components
+│ ├── pages/ # Page-level components
+│ └── App.tsx # Main App component
+│
+├── public/ # Static assets
+├── package.json # Project dependencies
+├── tailwind.config.ts # Tailwind CSS config
+├── vite.config.ts # Vite config
+└── README.md # Project documentation
 
-
+yaml
+Copy
+Edit
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Getting Started (Local Development)
 
-### 1️⃣ Clone the repository
+### 1️⃣ Clone the Repository
 ```bash
-git clone https://github.com/<your-username>/udyam-assignment.git
-cd udyam-assignment
-2️⃣ Set up environment variables
-Copy .env.example to .env in both frontend and backend folders.
-
-Backend .env
-DATABASE_URL=postgresql://user:pass@localhost:5432/udyam
-PORT=5000
-POSTPIN_API_KEY=your_api_key
-
-NEXT_PUBLIC_API_BASE=http://localhost:5000/api
-3️⃣ Install dependencies
-
-# Frontend
-cd frontend
+git clone https://github.com/yourusername/udyam-digital-twin.git
+cd udyam-digital-twin
+2️⃣ Install Dependencies
 npm install
-
-# Backend
-cd ../backend
+3️⃣ Start the Frontend
+npm run dev
+4️⃣ Backend Setup (if running locally)
+cd server
 npm install
-4️⃣ Database setup
-
-# Run migrations (Prisma)
-npx prisma migrate dev
-5️⃣ Run the application
-bash
-Copy
-Edit
-# Backend
-cd backend
 npm run dev
-
-# Frontend (in new terminal)
-cd frontend
-npm run dev
-Frontend: http://localhost:3000
-Backend API: http://localhost:5000/api
-
-🧪 Running Tests
-
-# Frontend tests
-cd frontend
-npm test
-
-# Backend tests
-cd backend
-npm test
-📡 API Endpoints
+🌍 Deployment
+Backend on Render
+Create a new Web Service on Render
+Connect your GitHub repo containing the backend
+Set Build Command:
+npm install
+Set Start Command:
+npm start
+Deploy & note the backend API URL (e.g., https://udyam-registration-1.onrender.com)
+Frontend on Vercel
+Go to Vercel
+Import your frontend repo
+Set Environment Variable:
+VITE_API_BASE=https://udyam-registration-1.onrender.com/api
+Deploy 🚀
+📌 API Endpoints
 Method	Endpoint	Description
-POST	/api/validate	Validate form data against rules
-POST	/api/submit	Store submission in DB
-GET	/api/schema	Fetch scraped JSON schema
-
-Example request:
-
-curl -X POST http://localhost:5000/api/validate \
--H "Content-Type: application/json" \
--d '{"aadhaar":"123412341234"}'
-
-
-📸 Screenshots
-Step 1 (Aadhaar)	Step 2 (PAN)
-
-🐳 Docker Setup
-bash
-Copy
-Edit
-docker-compose up --build
-This spins up:
-
-Frontend (Next.js)
-
-Backend (Node.js)
-
-PostgreSQL
-
-✅ Evaluation Checklist
- Scraped Step 1 & Step 2 fields with validation
-
- Dynamic form rendering from schema
-
- Responsive mobile-first UI
-
- Real-time Aadhaar/PAN validation
-
- Progress tracker
-
- Backend validation & Postgres storage
-
- Unit + API tests
-
- Dockerized deployment
+POST	/api/register	Submit Udyam form data
+GET	/api/status/:id	Get registration status
 
 📜 License
-MIT License — free to use and modify.
-
+This project is licensed under the MIT License.
